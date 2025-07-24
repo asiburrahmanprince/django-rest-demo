@@ -8,3 +8,5 @@ def test_function(request):
     pass
 def another_test_function(request):
     pass
+def final_test_function(request):
+    pass
