@@ -6,3 +6,5 @@ def hello_world(request):
     return Response({"message": "Hello, Git World!"})
 def test_function(request):
     pass
+def another_test_function(request):
+    pass
