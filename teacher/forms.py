@@ -10,4 +10,4 @@ class TeacherForm(forms.ModelForm):
 
     class Meta:
         model = Teacher
-        fields = ['name', 'subjects']
+        fields = ['name', 'designation', 'subjects']

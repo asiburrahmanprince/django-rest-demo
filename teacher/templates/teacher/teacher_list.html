@@ -9,6 +9,7 @@
     <thead>
       <tr>
         <th>Teacher Name</th>
+        <th>Designation</th>
         <th>Subjects</th>
         <th>Actions</th>
       </tr>
@@ -17,6 +18,7 @@
       {% for teacher in teachers %}
         <tr>
           <td>{{ teacher.name }}</td>
+          <td>{{ teacher.designation }}</td>
           <td>
             {% for subject in teacher.subjects.all %}
               {{ subject.name }}{% if not forloop.last %}, {% endif %}
