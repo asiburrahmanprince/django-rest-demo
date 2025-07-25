@@ -5,4 +5,14 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('classes/', include('school_class.urls')),
     path('subjects/', include('subjects.urls')),
+    path('teachers/', include('teacher.urls')),
+    path('assignments/', include('teacher_class_assignment.urls')),
+    path('teacher_subjects/', include('teacher_subject.urls')),
+    path('sections/', include('section.urls')),
+    path('students/', include('student.urls')),
+    path('staff/', include('staff.urls')),
+    path('admin-staff/', include('admin_staff.urls')),
+    path('account-staff/', include('account_staff.urls')),
+
+
 ]

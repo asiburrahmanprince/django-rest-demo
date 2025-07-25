@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-5">
+  <h2>Admin Staff List</h2>
+  <a href="{% url 'adminstaff_create' %}" class="btn btn-primary mb-3">Add Admin Staff</a>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Role</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for staff in adminstaffs %}
+      <tr>
+        <td>{{ staff.name }}</td>
+        <td>{{ staff.role }}</td>
+        <td>
+          <a href="{% url 'adminstaff_update' staff.pk %}" class="btn btn-warning btn-sm">Edit</a>
+          <a href="{% url 'adminstaff_delete' staff.pk %}" class="btn btn-danger btn-sm">Delete</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

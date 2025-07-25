@@ -1,11 +1,13 @@
 {% extends 'base.html' %}
 {% block title %}Delete Subject{% endblock %}
 {% block content %}
-<h2>Confirm Delete</h2>
-<p>Are you sure you want to delete subject: <strong>{{ object.name }}</strong>?</p>
-<form method="post">
-    {% csrf_token %}
-    <button type="submit" class="btn btn-danger">Delete</button>
-    <a href="{% url 'subject-list' %}" class="btn btn-secondary">Cancel</a>
-</form>
+<div class="container mt-5">
+    <h2>Confirm Delete</h2>
+    <p>Are you sure you want to delete subject: <strong>{{ object.name }}</strong>?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Delete</button>
+        <a href="{% url 'subject-list' %}" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
 {% endblock %}

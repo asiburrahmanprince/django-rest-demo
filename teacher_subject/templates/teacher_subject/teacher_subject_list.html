@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-5">
+  <h2>Teacher-Subject Assignments</h2>
+  <a href="{% url 'teacher_subject_create' %}" class="btn btn-primary mb-3">Assign New</a>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Teacher</th>
+        <th>Subject</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for ts in teacher_subjects %}
+        <tr>
+          <td>{{ ts.teacher.name }}</td>
+          <td>{{ ts.subject.name }}</td>
+          <td>
+            <a href="{% url 'teacher_subject_edit' ts.pk %}" class="btn btn-sm btn-warning">Edit</a>
+            <a href="{% url 'teacher_subject_delete' ts.pk %}" class="btn btn-sm btn-danger">Delete</a>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

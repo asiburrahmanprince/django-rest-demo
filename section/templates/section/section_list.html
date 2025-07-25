@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-5">
+  <h2>Sections</h2>
+
+  <!-- Custom style for selected button -->
+  <style>
+    .selected-btn {
+      background-color: #ff6600 !important; /* Custom orange */
+      color: #fff !important;
+      font-weight: bold;
+      border-color: #cc5200 !important;
+    }
+  </style>
+
+  <!-- Class filter buttons -->
+  <div class="mb-3">
+    {% for class in classes %}
+      {% with "Class " as class_prefix %}
+        <a href="?class_name={{ class.name }}"
+           class="btn {% if selected_class == class.name %}selected-btn active{% else %}btn-outline-primary{% endif %} m-1">
+          {{ class_prefix }}{{ class.name }}
+        </a>
+      {% endwith %}
+    {% endfor %}
+    <a href="{% url 'section_list' %}" class="btn btn-secondary m-1">Reset</a>
+  </div>
+
+  <a href="{% url 'section_add' %}" class="btn btn-primary mb-3">Add Section</a>
+
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Class</th>
+        <th>Section</th>
+        <th>Medium</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for section in sections %}
+        <tr>
+          <td>{{ section.school_class }}</td>
+          <td>{{ section.name }}</td>
+          <td>{{ section.get_medium_display }}</td>
+          <td>
+            <a href="{% url 'section_edit' section.pk %}" class="btn btn-sm btn-warning">Edit</a>
+            <a href="{% url 'section_delete' section.pk %}" class="btn btn-sm btn-danger">Delete</a>
+          </td>
+        </tr>
+      {% empty %}
+        <tr>
+          <td colspan="4" class="text-center">No sections found.</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}
