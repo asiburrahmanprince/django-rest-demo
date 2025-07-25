@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+  <h2>Teacher List</h2>
+  <a href="{% url 'teacher_add' %}" class="btn btn-primary mb-3">Add Teacher</a>
+
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Teacher Name</th>
+        <th>Subjects</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for teacher in teachers %}
+        <tr>
+          <td>{{ teacher.name }}</td>
+          <td>
+            {% for subject in teacher.subjects.all %}
+              {{ subject.name }}{% if not forloop.last %}, {% endif %}
+            {% empty %}
+              <em>No subjects</em>
+            {% endfor %}
+          </td>
+          <td>
+            <a href="{% url 'teacher_edit' teacher.pk %}" class="btn btn-sm btn-warning">Edit</a>
+            <a href="{% url 'teacher_delete' teacher.pk %}" class="btn btn-sm btn-danger">Delete</a>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}
