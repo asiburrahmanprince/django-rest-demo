@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}{{ view.object|default:"Add" }} Subject{% endblock %}
+{% block content %}
+<div class="container mt-5">
+    <h2>{{ view.object|default:"Add" }} Subject</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-success">Save</button>
+        <a href="{% url 'subject-list' %}" class="btn btn-secondary">Back</a>
+    </form>
+</div>
+{% endblock %}

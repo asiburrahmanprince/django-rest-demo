@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-5">
+  <h2>School Classes</h2>
+  <a href="{% url 'class-create' %}" class="btn btn-primary mb-3">Add New Class</a>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Class Name</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for class in classes %}
+        <tr>
+          <td>Class {{ class.name }}</td>
+          <td>
+            <a href="{% url 'class-update' class.pk %}" class="btn btn-sm btn-warning">Edit</a>
+            <a href="{% url 'class-delete' class.pk %}" class="btn btn-sm btn-danger">Delete</a>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}
