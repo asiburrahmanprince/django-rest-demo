@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-5">
+  <h2>Sections</h2>
+  <a href="{% url 'section_add' %}" class="btn btn-primary mb-3">Add Section</a>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Class</th>
+        <th>Section</th>
+        <th>Medium</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for section in sections %}
+        <tr>
+          <td>{{ section.school_class }}</td>
+          <td>{{ section.name }}</td>
+          <td>{{ section.get_medium_display }}</td>
+          <td>
+            <a href="{% url 'section_edit' section.pk %}" class="btn btn-sm btn-warning">Edit</a>
+            <a href="{% url 'section_delete' section.pk %}" class="btn btn-sm btn-danger">Delete</a>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}
