@@ -3,11 +3,21 @@
 {% block content %}
 <div class="container mt-5">
     <h2>Subjects</h2>
+    <div class="mb-3">
+      {% for school_class in all_classes %}
+          {% with "Class " as class_prefix %}
+            <a href="?class_id={{ school_class.id }}" class="btn btn-outline-primary">
+               {{ class_prefix }}{{ school_class.name }}
+            </a>
+          {% endwith %}
+      {% endfor %}
+      <a href="{% url 'subject-list' %}" class="btn btn-secondary m-1">Reset</a>
+    </div>
+
     <a href="{% url 'subject-add' %}" class="btn btn-primary mb-3">Add Subject</a>
-    <table class="table table-bordered">
+    <table class="table table-bordered" style="width: 50%">
         <thead>
             <tr>
-                <th>ID</th>
                 <th>Name</th>
                 <th>Actions</th>
             </tr>
@@ -15,7 +25,6 @@
         <tbody>
             {% for subject in subjects %}
             <tr>
-                <td>{{ subject.id }}</td>
                 <td>{{ subject.name }}</td>
                 <td>
                     <a href="{% url 'subject-edit' subject.pk %}" class="btn btn-sm btn-warning">Edit</a>
