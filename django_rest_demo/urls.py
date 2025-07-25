@@ -10,5 +10,8 @@ urlpatterns = [
     path('teacher_subjects/', include('teacher_subject.urls')),
     path('sections/', include('section.urls')),
     path('students/', include('student.urls')),
+    path('staff/', include('staff.urls')),
+    path('admin-staff/', include('admin_staff.urls')),
+
 
 ]
